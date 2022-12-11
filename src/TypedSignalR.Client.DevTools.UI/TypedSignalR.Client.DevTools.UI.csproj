@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>TypedSignalR.Client.DevTools</RootNamespace>
+
+        <!-- NuGet -->
+        <PackageId>TypedSignalR.Client.DevTools.UI</PackageId>
+        <AssemblyName>TypedSignalR.Client.DevTools.UI</AssemblyName>
+        <Title>TypedSignalR.Client.DevTools.UI</Title>
+        <Description>SignalR development tools inspired by SwaggerUI.</Description>
+        <Authors>nenoNaninu</Authors>
+        <RepositoryUrl>https://github.com/nenoNaninu/TypedSignalR.Client.DevTools</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>signalr;sourcegenerator</PackageTags>
+        <Copyright>(c) nenoNaninu</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="./signalr-dev/**/*.*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="EmbeddedResourcePathProvider.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>EmbeddedResourcePathProvider.tt</DependentUpon>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="EmbeddedResourcePathProvider.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>EmbeddedResourcePathProvider.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="EmbeddedResourcePathProvider.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>EmbeddedResourcePathProvider.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

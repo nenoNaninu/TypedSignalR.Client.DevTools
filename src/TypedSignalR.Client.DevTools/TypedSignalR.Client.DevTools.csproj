@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+
+        <!-- NuGet -->
+        <PackageId>TypedSignalR.Client.DevTools</PackageId>
+        <AssemblyName>TypedSignalR.Client.DevTools</AssemblyName>
+        <Title>TypedSignalR.Client.DevTools</Title>
+        <Description>SignalR development tools inspired by SwaggerUI.</Description>
+        <Authors>nenoNaninu</Authors>
+        <RepositoryUrl>https://github.com/nenoNaninu/TypedSignalR.Client.DevTools</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>signalr;sourcegenerator</PackageTags>
+        <Copyright>(c) nenoNaninu</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="TypedSignalR.Client.Attributes" Version="1.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TypedSignalR.Client.DevTools.UI\TypedSignalR.Client.DevTools.UI.csproj" />
+        <ProjectReference Include="..\TypedSignalR.Client.DevTools.Specification\TypedSignalR.Client.DevTools.Specification.csproj" />
+    </ItemGroup>
+
+</Project>
