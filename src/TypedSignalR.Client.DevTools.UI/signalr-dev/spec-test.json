@@ -1,0 +1,762 @@
+[
+    {
+        "name": "ChatHub",
+        "path": "/hubs/ChatHub",
+        "isAuthRequired": false,
+        "hubType": {
+            "interfaceName": "IChatHub",
+            "interfaceFullName": "global::Shared.IChatHub",
+            "collisionFreeName": "global__Shared_IChatHub",
+            "methods": [
+                {
+                    "methodName": "EnterRoom",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "roomId",
+                            "typeName": "global::System.Guid"
+                        },
+                        {
+                            "name": "userName",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "PostMessage",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "text",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "GetMessages",
+                    "returnType": "global::System.Threading.Tasks.Task<global::Shared.Message[]>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.Message[]",
+                    "parameters": []
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IChatHubReceiver",
+            "interfaceFullName": "global::Shared.IChatHubReceiver",
+            "collisionFreeName": "global__Shared_IChatHubReceiver",
+            "methods": [
+                {
+                    "methodName": "OnEnter",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "userName",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "OnMessage",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "typeName": "global::Shared.Message"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "name": "UnaryHub",
+        "path": "/hubs/UnaryHub",
+        "isAuthRequired": false,
+        "hubType": {
+            "interfaceName": "IUnaryHub",
+            "interfaceFullName": "global::Shared.IUnaryHub",
+            "collisionFreeName": "global__Shared_IUnaryHub",
+            "methods": [
+                {
+                    "methodName": "Get",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": []
+                },
+                {
+                    "methodName": "Add",
+                    "returnType": "global::System.Threading.Tasks.Task<int>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "int",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Cat",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "string"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo",
+                    "returnType": "global::System.Threading.Tasks.Task<global::Shared.UserDefinedType>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.UserDefinedType",
+                    "parameters": [
+                        {
+                            "name": "instance",
+                            "typeName": "global::Shared.UserDefinedType"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo2",
+                    "returnType": "global::System.Threading.Tasks.Task<byte[]>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "byte[]",
+                    "parameters": [
+                        {
+                            "name": "binary",
+                            "typeName": "byte[]"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo3",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Guid>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Guid",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "typeName": "global::System.Guid"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo4",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.DateTime>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.DateTime",
+                    "parameters": [
+                        {
+                            "name": "dateTime",
+                            "typeName": "global::System.DateTime"
+                        }
+                    ]
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IUnaryHubReceiver",
+            "interfaceFullName": "global::Shared.IUnaryHubReceiver",
+            "collisionFreeName": "global__Shared_IUnaryHubReceiver",
+            "methods": []
+        }
+    },
+    {
+        "name": "SideEffectHub",
+        "path": "/hubs/SideEffectHub",
+        "isAuthRequired": false,
+        "hubType": {
+            "interfaceName": "ISideEffectHub",
+            "interfaceFullName": "global::Shared.ISideEffectHub",
+            "collisionFreeName": "global__Shared_ISideEffectHub",
+            "methods": [
+                {
+                    "methodName": "Init",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": []
+                },
+                {
+                    "methodName": "Increment",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": []
+                },
+                {
+                    "methodName": "Result",
+                    "returnType": "global::System.Threading.Tasks.Task<int>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "int",
+                    "parameters": []
+                },
+                {
+                    "methodName": "Post",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "instance",
+                            "typeName": "global::Shared.UserDefinedType"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Fetch",
+                    "returnType": "global::System.Threading.Tasks.Task<global::Shared.UserDefinedType[]>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.UserDefinedType[]",
+                    "parameters": []
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "ISideEffectHubReceiver",
+            "interfaceFullName": "global::Shared.ISideEffectHubReceiver",
+            "collisionFreeName": "global__Shared_ISideEffectHubReceiver",
+            "methods": []
+        }
+    },
+    {
+        "name": "ReceiverTestHub",
+        "path": "/hubs/ReceiverTestHub",
+        "isAuthRequired": false,
+        "hubType": {
+            "interfaceName": "IReceiverTestHub",
+            "interfaceFullName": "global::Shared.IReceiverTestHub",
+            "collisionFreeName": "global__Shared_IReceiverTestHub",
+            "methods": [
+                {
+                    "methodName": "Start",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": []
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IReceiver",
+            "interfaceFullName": "global::Shared.IReceiver",
+            "collisionFreeName": "global__Shared_IReceiver",
+            "methods": [
+                {
+                    "methodName": "ReceiveMessage",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "typeName": "string"
+                        },
+                        {
+                            "name": "value",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Notify",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": []
+                },
+                {
+                    "methodName": "ReceiveCustomMessage",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "userDefined",
+                            "typeName": "global::Shared.UserDefinedType"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "name": "StreamingHub",
+        "path": "/hubs/StreamingHub",
+        "isAuthRequired": false,
+        "hubType": {
+            "interfaceName": "IStreamingHub",
+            "interfaceFullName": "global::Shared.IStreamingHub",
+            "collisionFreeName": "global__Shared_IStreamingHub",
+            "methods": [
+                {
+                    "methodName": "ZeroParameter",
+                    "returnType": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.Person>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.Person",
+                    "parameters": []
+                },
+                {
+                    "methodName": "CancellationTokenOnly",
+                    "returnType": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.Person>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.Person",
+                    "parameters": [
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Counter",
+                    "returnType": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.StreamingHubMessage>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.StreamingHubMessage",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "CancelableCounter",
+                    "returnType": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.StreamingHubMessage>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.StreamingHubMessage",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "TaskCancelableCounter",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Collections.Generic.IAsyncEnumerable<global::Shared.StreamingHubMessage>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.StreamingHubMessage>",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "ZeroParameterChannel",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Threading.Channels.ChannelReader<global::Shared.Person>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Threading.Channels.ChannelReader<global::Shared.Person>",
+                    "parameters": []
+                },
+                {
+                    "methodName": "CancellationTokenOnlyChannel",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Threading.Channels.ChannelReader<global::Shared.Person>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Threading.Channels.ChannelReader<global::Shared.Person>",
+                    "parameters": [
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "CounterChannel",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "CancelableCounterChannel",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "TaskCancelableCounterChannel",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Threading.Channels.ChannelReader<global::Shared.StreamingHubMessage>",
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "init",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "step",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "count",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "cancellationToken",
+                            "typeName": "global::System.Threading.CancellationToken"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "UploadStream",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "stream",
+                            "typeName": "global::System.Collections.Generic.IAsyncEnumerable<global::Shared.Person>"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "UploadStreamAsChannel",
+                    "returnType": "global::System.Threading.Tasks.Task",
+                    "isGenericReturnType": false,
+                    "genericReturnTypeArgument": null,
+                    "parameters": [
+                        {
+                            "name": "publisher",
+                            "typeName": "global::Shared.Person"
+                        },
+                        {
+                            "name": "stream",
+                            "typeName": "global::System.Threading.Channels.ChannelReader<global::Shared.Person>"
+                        }
+                    ]
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IStreamingHubReceiver",
+            "interfaceFullName": "global::Shared.IStreamingHubReceiver",
+            "collisionFreeName": "global__Shared_IStreamingHubReceiver",
+            "methods": []
+        }
+    },
+    {
+        "name": "AuthUnaryHub",
+        "path": "/hubs/AuthUnaryHub",
+        "isAuthRequired": true,
+        "hubType": {
+            "interfaceName": "IAuthUnaryHub",
+            "interfaceFullName": "global::Shared.IAuthUnaryHub",
+            "collisionFreeName": "global__Shared_IAuthUnaryHub",
+            "methods": [
+                {
+                    "methodName": "Get",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": []
+                },
+                {
+                    "methodName": "Add",
+                    "returnType": "global::System.Threading.Tasks.Task<int>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "int",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Cat",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "string"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo",
+                    "returnType": "global::System.Threading.Tasks.Task<global::Shared.UserDefinedType>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.UserDefinedType",
+                    "parameters": [
+                        {
+                            "name": "instance",
+                            "typeName": "global::Shared.UserDefinedType"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo2",
+                    "returnType": "global::System.Threading.Tasks.Task<byte[]>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "byte[]",
+                    "parameters": [
+                        {
+                            "name": "binary",
+                            "typeName": "byte[]"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo3",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Guid>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Guid",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "typeName": "global::System.Guid"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo4",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.DateTime>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.DateTime",
+                    "parameters": [
+                        {
+                            "name": "dateTime",
+                            "typeName": "global::System.DateTime"
+                        }
+                    ]
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IAuthUnaryHubReceiver",
+            "interfaceFullName": "global::Shared.IAuthUnaryHubReceiver",
+            "collisionFreeName": "global__Shared_IAuthUnaryHubReceiver",
+            "methods": []
+        }
+    },
+    {
+        "name": "AuthUnaryHub2",
+        "path": "/hubs/AuthUnaryHub2",
+        "isAuthRequired": true,
+        "hubType": {
+            "interfaceName": "IAuthUnaryHub",
+            "interfaceFullName": "global::Shared.IAuthUnaryHub",
+            "collisionFreeName": "global__Shared_IAuthUnaryHub",
+            "methods": [
+                {
+                    "methodName": "Get",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": []
+                },
+                {
+                    "methodName": "Add",
+                    "returnType": "global::System.Threading.Tasks.Task<int>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "int",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "int"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "int"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Cat",
+                    "returnType": "global::System.Threading.Tasks.Task<string>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "string",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "typeName": "string"
+                        },
+                        {
+                            "name": "y",
+                            "typeName": "string"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo",
+                    "returnType": "global::System.Threading.Tasks.Task<global::Shared.UserDefinedType>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::Shared.UserDefinedType",
+                    "parameters": [
+                        {
+                            "name": "instance",
+                            "typeName": "global::Shared.UserDefinedType"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo2",
+                    "returnType": "global::System.Threading.Tasks.Task<byte[]>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "byte[]",
+                    "parameters": [
+                        {
+                            "name": "binary",
+                            "typeName": "byte[]"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo3",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.Guid>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.Guid",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "typeName": "global::System.Guid"
+                        }
+                    ]
+                },
+                {
+                    "methodName": "Echo4",
+                    "returnType": "global::System.Threading.Tasks.Task<global::System.DateTime>",
+                    "isGenericReturnType": true,
+                    "genericReturnTypeArgument": "global::System.DateTime",
+                    "parameters": [
+                        {
+                            "name": "dateTime",
+                            "typeName": "global::System.DateTime"
+                        }
+                    ]
+                }
+            ]
+        },
+        "receiverType": {
+            "interfaceName": "IAuthUnaryHubReceiver",
+            "interfaceFullName": "global::Shared.IAuthUnaryHubReceiver",
+            "collisionFreeName": "global__Shared_IAuthUnaryHubReceiver",
+            "methods": []
+        }
+    }
+]

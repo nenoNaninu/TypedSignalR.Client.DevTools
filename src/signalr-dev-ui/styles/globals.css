@@ -1,0 +1,94 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.back-red {
+  background: red;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.h-max {
+  height: 100%;
+}
+
+.w-max {
+  width: 100%;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontal-container-sb {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+  width: 100%;
+  max-width: 100%;
+}
+
+.parent-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pre-code {
+  overflow-x: auto;
+  white-space: pre-wrap;
+}

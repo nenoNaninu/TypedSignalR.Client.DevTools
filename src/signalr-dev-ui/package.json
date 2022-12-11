@@ -1,0 +1,28 @@
+{
+    "name": "signalr-dev-ui",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "export": "next build && next export -o ../TypedSignalR.Client.DevTools.UI/signalr-dev",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@microsoft/signalr": "^6.0.10",
+        "bulma": "^0.9.4",
+        "next": "12.3.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "sass": "^1.55.0"
+    },
+    "devDependencies": {
+        "@types/node": "18.11.5",
+        "@types/react": "18.0.22",
+        "@types/react-dom": "18.0.7",
+        "eslint": "8.26.0",
+        "eslint-config-next": "12.3.1",
+        "typescript": "4.8.4"
+    }
+}
