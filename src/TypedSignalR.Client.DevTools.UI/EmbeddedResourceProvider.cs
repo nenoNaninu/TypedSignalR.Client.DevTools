@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace TypedSignalR.Client.DevTools;
 
-public static class EmbeddedResourceProvider
+internal static class EmbeddedResourceProvider
 {
     private static readonly Assembly Assembly;
     private static readonly string[]? ResourceNames;

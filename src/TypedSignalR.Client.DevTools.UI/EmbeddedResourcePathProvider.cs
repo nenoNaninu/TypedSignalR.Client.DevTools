@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace TypedSignalR.Client.DevTools;
 
-public static class EmbeddedResourcePathProvider
+internal static class EmbeddedResourcePathProvider
 {
     private static readonly string[] _paths = new[]
     {

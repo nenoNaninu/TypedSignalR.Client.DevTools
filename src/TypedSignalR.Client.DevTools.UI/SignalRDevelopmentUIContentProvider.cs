@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace TypedSignalR.Client.DevTools;
 
-public static class SignalRDevelopmentUIContentProvider
+internal static class SignalRDevelopmentUIContentProvider
 {
     private const string Prefix = "TypedSignalR.Client.DevTools";
 
