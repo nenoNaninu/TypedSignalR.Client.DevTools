@@ -1,0 +1,41 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+
+env:
+  DOTNET_VERSION: "7.0.x"
+  DOTNET_NOLOGO: true
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Get version from git tag
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: dotnet pack TypedSignalR.Client.DevTools
+        run: dotnet pack -c Release --output ${{ github.workspace }}/artifacts -p:Version=${{ env.RELEASE_VERSION }} ./src/TypedSignalR.Client.DevTools/TypedSignalR.Client.DevTools.csproj
+
+      - name: dotnet pack TypedSignalR.Client.DevTools.Specification
+        run: dotnet pack -c Release --output ${{ github.workspace }}/artifacts -p:Version=${{ env.RELEASE_VERSION }} ./src/TypedSignalR.Client.DevTools.Specification/TypedSignalR.Client.DevTools.Specification.csproj
+
+      - name: dotnet pack TypedSignalR.Client.DevTools.UI
+        run: dotnet pack -c Release --output ${{ github.workspace }}/artifacts -p:Version=${{ env.RELEASE_VERSION }} ./src/TypedSignalR.Client.DevTools.UI/TypedSignalR.Client.DevTools.UI.csproj
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Packages
+          path: ${{ github.workspace }}/artifacts
+
+      - name: dotnet nuget push
+        run: dotnet nuget push ${{ github.workspace }}/artifacts/*.nupkg --skip-duplicate -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
