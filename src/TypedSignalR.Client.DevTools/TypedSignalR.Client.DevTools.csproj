@@ -4,7 +4,6 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <NoWarn>$(NoWarn);NU5128</NoWarn>
 
         <!-- NuGet -->
         <PackageId>TypedSignalR.Client.DevTools</PackageId>
