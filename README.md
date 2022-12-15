@@ -27,6 +27,7 @@ In other words, it allows easy and quick execution and debugging from the GUI.
 - [Example](#example)
   - [CLI](#cli)
   - [Visual Studio](#visual-studio)
+  - [JWT Authentification Example](#jwt-authentification-example)
 - [Related Work](#related-work)
 
 ## Install
@@ -227,6 +228,20 @@ $ dotnet run --project ./examples/Server/Server.csproj
 If you use visual studio, set the startup project to server and select Server-SignalR to run the application. A browser will automatically launch and access `/signalr-dev`.
 
 ![example-visual-studio](https://user-images.githubusercontent.com/27144255/205682179-42458d14-1ba3-4a5b-90e9-77a1e5c2b256.png)
+
+### JWT Authentification Example
+
+This example uses auth0 for authentication.
+Please refer to [this blog](https://auth0.com/blog/aspnet-web-api-authorization/) for the usage of auth0.
+For the auth0 key, set the following to the user secret, etc.
+If keys are empty, this example works well, but JWT authentication does not work correctly.
+
+```
+{
+    "Auth0:Domain": "xxxx.auth0.com",
+    "Auth0:Audience": "yyyy"
+}
+```
 
 
 ## Related Work
