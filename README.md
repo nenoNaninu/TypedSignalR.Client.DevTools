@@ -232,9 +232,9 @@ If you use visual studio, set the startup project to server and select Server-Si
 ### JWT Authentification Example
 
 This example uses auth0 for authentication.
-Please refer to [this blog](https://auth0.com/blog/aspnet-web-api-authorization/) for the usage of auth0.
 For the auth0 key, set the following to the user secret, etc.
 If keys are empty, this example works well, but JWT authentication does not work correctly.
+Please refer to [this blog](https://auth0.com/blog/aspnet-web-api-authorization/) if you need to learn how to use auth0. 
 
 ```
 {
