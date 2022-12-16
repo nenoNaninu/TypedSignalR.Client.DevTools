@@ -7,7 +7,7 @@ namespace TypedSignalR.Client.DevTools;
 
 public static partial class EndpointRouteBuilderExtensions
 {
-    public static void UseSignalRDevelopmentUI(this IEndpointRouteBuilder endpointRouteBuilder)
+    public static void UseSignalRHubDevelopmentUI(this IEndpointRouteBuilder endpointRouteBuilder)
     {
         // Actually, it does not use middleware.
 

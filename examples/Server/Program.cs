@@ -54,7 +54,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     app.UseSignalRHubSpecification();
-    app.UseSignalRDevelopmentUI();
+    app.UseSignalRHubDevelopmentUI();
 }
 
 app.UseHttpsRedirection();
