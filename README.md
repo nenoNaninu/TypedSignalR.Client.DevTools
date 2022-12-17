@@ -110,6 +110,8 @@ Finally, add `MapHub` as usual in `Program.cs`.
 Note that the first argument of MapHub must be a string literal because this library determines the hub URL at compile time.
 
 ```cs
+// Program.cs
+
 // Impl...
 
 app.MapControllers();
