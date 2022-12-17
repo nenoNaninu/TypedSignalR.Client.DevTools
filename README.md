@@ -63,7 +63,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     app.UseSignalRHubSpecification(); // <- Add!
-    app.UseSignalRDevelopmentUI(); // <- Add!
+    app.UseSignalRHubDevelopmentUI(); // <- Add!
 }
 
 app.UseAuthentication();
