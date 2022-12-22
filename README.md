@@ -44,7 +44,7 @@ Two steps are required to use this library.
 1. Add two middleware to the http pipeline.
 1. Add the attribute to hub and receiver interfaces.
 
-Fist, after installing the package, add the `app.UseSignalRHubSpecification()` and `app.UseSignalRDevelopmentUI()` like the following code to the HTTP pipeline in `Program.cs`. 
+Fist, after installing the package, add the `app.UseSignalRHubSpecification()` and `app.UseSignalRHubDevelopmentUI()` like the following code to the HTTP pipeline in `Program.cs`. 
 It is recommended to activate it only in the development environment.
 
 ```cs
