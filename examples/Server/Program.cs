@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         //     check JwtBearerHandler.HandleAuthenticateAsync
         options.Events = new JwtBearerEvents
         {
-            OnMessageReceived = context =>
+            OnMessageReceived = static context =>
             {
                 var accessToken = context.Request.Query["access_token"];
 
