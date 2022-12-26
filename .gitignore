@@ -476,3 +476,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 .idea/
+
+examples/Server/Properties/ServiceDependencies/
