@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -167,25 +166,26 @@ public sealed class SourceGenerator : IIncrementalGenerator
         var asyncEnumerableSymbol = compilation.GetTypeByMetadataName("System.Collections.Generic.IAsyncEnumerable`1");
         var channelReaderSymbol = compilation.GetTypeByMetadataName("System.Threading.Channels.ChannelReader`1");
 
-        var hubEndpointRouteBuilderExtensions = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Builder.HubEndpointRouteBuilderExtensions");
-        var authorizeAttribute = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Authorization.AuthorizeAttribute");
-        var hubAttribute = compilation.GetTypeByMetadataName("TypedSignalR.Client.HubAttribute");
-        var receiverAttribute = compilation.GetTypeByMetadataName("TypedSignalR.Client.ReceiverAttribute");
+        var hubEndpointRouteBuilderExtensions = compilation.GetTypesByMetadataName("Microsoft.AspNetCore.Builder.HubEndpointRouteBuilderExtensions");
+        var authorizeAttributes = compilation.GetTypesByMetadataName("Microsoft.AspNetCore.Authorization.AuthorizeAttribute");
+        var hubAttributes = compilation.GetTypesByMetadataName("TypedSignalR.Client.HubAttribute");
+        var receiverAttributes = compilation.GetTypesByMetadataName("TypedSignalR.Client.ReceiverAttribute");
 
-        int count = 0;
-        var mapHubMethodSymbols = new IMethodSymbol[2];
+        var mapHubMethodSymbols = ImmutableArray<IMethodSymbol>.Empty;
 
-        foreach (var memberSymbol in hubEndpointRouteBuilderExtensions!.GetMembers())
+        foreach (var builderExtensions in hubEndpointRouteBuilderExtensions)
         {
-            if (memberSymbol is not IMethodSymbol methodSymbol)
+            foreach (var memberSymbol in builderExtensions.GetMembers())
             {
-                continue;
-            }
+                if (memberSymbol is not IMethodSymbol methodSymbol)
+                {
+                    continue;
+                }
 
-            if (methodSymbol.Name is "MapHub" && methodSymbol.MethodKind is MethodKind.Ordinary)
-            {
-                mapHubMethodSymbols[count] = methodSymbol;
-                count++;
+                if (methodSymbol.Name is "MapHub" && methodSymbol.MethodKind is MethodKind.Ordinary)
+                {
+                    mapHubMethodSymbols = mapHubMethodSymbols.Add(methodSymbol);
+                }
             }
         }
 
@@ -195,9 +195,9 @@ public sealed class SourceGenerator : IIncrementalGenerator
             cancellationTokenSymbol!,
             asyncEnumerableSymbol!,
             channelReaderSymbol!,
-            hubAttribute!,
-            receiverAttribute!,
-            authorizeAttribute!,
+            hubAttributes,
+            receiverAttributes,
+            authorizeAttributes,
             mapHubMethodSymbols
         );
     }
@@ -251,9 +251,12 @@ public sealed class SourceGenerator : IIncrementalGenerator
         {
             foreach (var attributeData in interfaceSymbol.GetAttributes())
             {
-                if (!SymbolEqualityComparer.Default.Equals(specialSymbols.HubAttributeSymbol, attributeData.AttributeClass))
+                foreach (var hubAttributeSymbol in specialSymbols.HubAttributeSymbols)
                 {
-                    continue;
+                    if (!SymbolEqualityComparer.Default.Equals(hubAttributeSymbol, attributeData.AttributeClass))
+                    {
+                        continue;
+                    }
                 }
 
                 var isValid = TypeValidator.ValidateHubTypeRule(context, interfaceSymbol, specialSymbols, location);
@@ -295,9 +298,12 @@ public sealed class SourceGenerator : IIncrementalGenerator
 
         foreach (var attributeData in receiverType.GetAttributes())
         {
-            if (SymbolEqualityComparer.Default.Equals(specialSymbols.ReceiverAttributeSymbol, attributeData.AttributeClass))
+            foreach (var receiverAttributeSymbol in specialSymbols.ReceiverAttributeSymbols)
             {
-                annotated = true;
+                if (SymbolEqualityComparer.Default.Equals(receiverAttributeSymbol, attributeData.AttributeClass))
+                {
+                    annotated = true;
+                }
             }
         }
 
@@ -323,9 +329,15 @@ public sealed class SourceGenerator : IIncrementalGenerator
     {
         var attributes = serviceType.GetAttributes();
 
-        if (attributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, specialSymbols.AuthorizeAttributeSymbol)))
+        foreach (var attribute in attributes)
         {
-            return true;
+            foreach (var authorizeAttributeSymbol in specialSymbols.AuthorizeAttributeSymbols)
+            {
+                if (SymbolEqualityComparer.Default.Equals(attribute.AttributeClass, authorizeAttributeSymbol))
+                {
+                    return true;
+                }
+            }
         }
 
         var members = serviceType.GetMembers();
@@ -336,9 +348,15 @@ public sealed class SourceGenerator : IIncrementalGenerator
             {
                 var methodAttributes = method.GetAttributes();
 
-                if (methodAttributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, specialSymbols.AuthorizeAttributeSymbol)))
+                foreach (var methodAttribute in methodAttributes)
                 {
-                    return true;
+                    foreach (var authorizeAttributeSymbol in specialSymbols.AuthorizeAttributeSymbols)
+                    {
+                        if (SymbolEqualityComparer.Default.Equals(methodAttribute.AttributeClass, authorizeAttributeSymbol))
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
         }

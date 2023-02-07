@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 
 namespace TypedSignalR.Client.CodeAnalysis;
@@ -10,10 +10,10 @@ public sealed class SpecialSymbols
     public readonly INamedTypeSymbol CancellationTokenSymbol;
     public readonly INamedTypeSymbol AsyncEnumerableSymbol;
     public readonly INamedTypeSymbol ChannelReaderSymbol;
-    public readonly INamedTypeSymbol HubAttributeSymbol;
-    public readonly INamedTypeSymbol ReceiverAttributeSymbol;
-    public readonly INamedTypeSymbol AuthorizeAttributeSymbol;
-    public readonly IReadOnlyList<IMethodSymbol> MapHubMethodSymbols;
+    public readonly ImmutableArray<INamedTypeSymbol> HubAttributeSymbols;
+    public readonly ImmutableArray<INamedTypeSymbol> ReceiverAttributeSymbols;
+    public readonly ImmutableArray<INamedTypeSymbol> AuthorizeAttributeSymbols;
+    public readonly ImmutableArray<IMethodSymbol> MapHubMethodSymbols;
 
     public SpecialSymbols(
         INamedTypeSymbol taskSymbol,
@@ -21,19 +21,19 @@ public sealed class SpecialSymbols
         INamedTypeSymbol cancellationTokenSymbol,
         INamedTypeSymbol asyncEnumerableSymbol,
         INamedTypeSymbol channelReaderSymbol,
-        INamedTypeSymbol hubAttributeSymbol,
-        INamedTypeSymbol receiverAttributeSymbol,
-        INamedTypeSymbol authorizeAttributeSymbol,
-        IReadOnlyList<IMethodSymbol> mapHubMethodSymbols)
+        ImmutableArray<INamedTypeSymbol> hubAttributeSymbols,
+        ImmutableArray<INamedTypeSymbol> receiverAttributeSymbols,
+        ImmutableArray<INamedTypeSymbol> authorizeAttributeSymbols,
+        ImmutableArray<IMethodSymbol> mapHubMethodSymbols)
     {
         TaskSymbol = taskSymbol;
         GenericTaskSymbol = genericTaskSymbol;
         CancellationTokenSymbol = cancellationTokenSymbol;
         AsyncEnumerableSymbol = asyncEnumerableSymbol;
         ChannelReaderSymbol = channelReaderSymbol;
-        HubAttributeSymbol = hubAttributeSymbol;
-        ReceiverAttributeSymbol = receiverAttributeSymbol;
-        AuthorizeAttributeSymbol = authorizeAttributeSymbol;
+        HubAttributeSymbols = hubAttributeSymbols;
+        ReceiverAttributeSymbols = receiverAttributeSymbols;
+        AuthorizeAttributeSymbols = authorizeAttributeSymbols;
         MapHubMethodSymbols = mapHubMethodSymbols;
     }
 }
