@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "examples\Server\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "examples\Shared\Shared.csproj", "{B023BFB8-29DA-4F55-A998-AFCA8820F655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedSignalR.Client.DevTools.Types", "TypedSignalR.Client.DevTools.Types\TypedSignalR.Client.DevTools.Types.csproj", "{66B9DA76-9FF8-42DA-95EF-A4337F3FF165}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedSignalR.Client.DevTools.Types", "src\TypedSignalR.Client.DevTools.Types\TypedSignalR.Client.DevTools.Types.csproj", "{66B9DA76-9FF8-42DA-95EF-A4337F3FF165}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
