@@ -2,9 +2,9 @@ name: build
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 env:
   DOTNET_VERSION: "7.0.x"
