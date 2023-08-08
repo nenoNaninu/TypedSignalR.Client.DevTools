@@ -47,7 +47,7 @@ using System;
 
 namespace TypedSignalR.Client.DevTools;
 
-public static partial class EndpointRouteBuilderExtensions
+internal static partial class EndpointRouteBuilderExtensions
 {{
     private static partial ReadOnlySpan<byte> GetSpecJsonBytes() => new byte[] {{ {str} }};
 }}";
