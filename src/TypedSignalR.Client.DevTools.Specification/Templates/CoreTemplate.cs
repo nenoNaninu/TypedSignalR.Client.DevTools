@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace TypedSignalR.Client.DevTools;
 
-public static partial class EndpointRouteBuilderExtensions
+internal static partial class EndpointRouteBuilderExtensions
 {
     /// <summary>
     /// /signalr-dev/spec.json
