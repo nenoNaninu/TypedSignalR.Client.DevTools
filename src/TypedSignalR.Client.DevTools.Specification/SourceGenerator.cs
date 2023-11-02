@@ -100,6 +100,12 @@ public sealed class SourceGenerator : IIncrementalGenerator
 
     private static string? GetPath(GeneratorSyntaxContext context, ExpressionSyntax syntax)
     {
+        if (syntax.Kind() == SyntaxKind.StringLiteralExpression
+            && syntax is LiteralExpressionSyntax literal)
+        {
+            return literal.Token.ValueText;
+        }
+
         var symbol = context.SemanticModel.GetSymbolInfo(syntax).Symbol;
 
         if (symbol is IFieldSymbol field
@@ -107,12 +113,6 @@ public sealed class SourceGenerator : IIncrementalGenerator
             && field.ConstantValue is string value)
         {
             return value;
-        }
-
-        if (syntax.Kind() == SyntaxKind.StringLiteralExpression
-            && syntax is LiteralExpressionSyntax literal)
-        {
-            return literal.Token.ValueText;
         }
 
         return null;
