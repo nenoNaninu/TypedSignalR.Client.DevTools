@@ -110,9 +110,16 @@ public sealed class SourceGenerator : IIncrementalGenerator
 
         if (symbol is IFieldSymbol field
             && field.IsConst
-            && field.ConstantValue is string value)
+            && field.ConstantValue is string fieldValue)
         {
-            return value;
+            return fieldValue;
+        }
+
+        if (symbol is ILocalSymbol local
+            && local.IsConst
+            && local.ConstantValue is string localValue)
+        {
+            return localValue;
         }
 
         return null;
