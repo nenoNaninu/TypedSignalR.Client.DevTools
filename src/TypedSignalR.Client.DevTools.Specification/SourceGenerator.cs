@@ -81,13 +81,7 @@ public sealed class SourceGenerator : IIncrementalGenerator
             return default;
         }
 
-        if (arguments[0].Expression.Kind() != SyntaxKind.StringLiteralExpression)
-        {
-            return default;
-        }
-
-        var literal = arguments[0].Expression as LiteralExpressionSyntax;
-        var path = literal?.Token.ValueText;
+        var path = GetPath(context, arguments[0].Expression);
 
         if (string.IsNullOrEmpty(path))
         {
@@ -102,6 +96,33 @@ public sealed class SourceGenerator : IIncrementalGenerator
         }
 
         return new SourceSymbol(methodSymbol, target.GetLocation(), path!);
+    }
+
+    private static string? GetPath(GeneratorSyntaxContext context, ExpressionSyntax syntax)
+    {
+        if (syntax.Kind() == SyntaxKind.StringLiteralExpression
+            && syntax is LiteralExpressionSyntax literal)
+        {
+            return literal.Token.ValueText;
+        }
+
+        var symbol = context.SemanticModel.GetSymbolInfo(syntax).Symbol;
+
+        if (symbol is IFieldSymbol field
+            && field.IsConst
+            && field.ConstantValue is string fieldValue)
+        {
+            return fieldValue;
+        }
+
+        if (symbol is ILocalSymbol local
+            && local.IsConst
+            && local.ConstantValue is string localValue)
+        {
+            return localValue;
+        }
+
+        return null;
     }
 
     private static ValidatedSourceSymbol ValidateMapHubMethodSymbol((SourceSymbol, SpecialSymbols) pair, CancellationToken cancellationToken)
