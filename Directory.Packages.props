@@ -1,0 +1,16 @@
+<Project>
+    <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="TypedSignalR.Client" Version="3.4.3" />
+        <PackageVersion Include="TypedSignalR.Client.Attributes" Version="1.1.0" />
+        <PackageVersion Include="Tapper.Attributes" Version="1.9.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" />
+        <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
+        <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
+        <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+</Project>

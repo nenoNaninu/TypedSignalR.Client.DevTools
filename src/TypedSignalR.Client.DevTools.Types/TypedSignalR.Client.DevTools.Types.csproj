@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Tapper.Attributes" Version="1.9.0" />
+        <PackageReference Include="Tapper.Attributes" />
     </ItemGroup>
 
 </Project>
