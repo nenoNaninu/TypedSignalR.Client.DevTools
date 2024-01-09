@@ -35,12 +35,12 @@ public static class DiagnosticDescriptorItems
 
     public static readonly DiagnosticDescriptor HubMethodReturnTypeRule = new(
         id: "TSRD003",
-        title: "The return type of methods in the interface must be Task or Task<T> or IAsyncEnumerable<T> or Task<IAsyncEnumerable<T> or Task<ChannelReader<T>>",
-        messageFormat: "The return type of {0} is not suitable. Instead, use Task or Task<T> or IAsyncEnumerable<T> or Task<IAsyncEnumerable<T> or Task<ChannelReader<T>>.",
+        title: "The return type of methods in the interface must be Task, Task<T>, IAsyncEnumerable<T>, Task<IAsyncEnumerable<T>> or Task<ChannelReader<T>>",
+        messageFormat: "The return type of {0} is not suitable. Instead, use Task, Task<T>, IAsyncEnumerable<T>, Task<IAsyncEnumerable<T>> or Task<ChannelReader<T>>.",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
-        description: "The return type of methods in the interface used for hub proxy must be Task or Task<T>.");
+        description: "The return type of methods in the interface used for hub proxy must be Task, Task<T>, IAsyncEnumerable<T>, Task<IAsyncEnumerable<T>> or Task<ChannelReader<T>>.");
 
     public static readonly DiagnosticDescriptor ReceiverMethodReturnTypeRule = new(
         id: "TSRD004",
@@ -49,12 +49,12 @@ public static class DiagnosticDescriptorItems
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
-        description: "The return type of methods in the interface must be Task or Task<T>.");
+        description: "The return type of methods in the interface used for receiver must be Task or Task<T>.");
 
     public static readonly DiagnosticDescriptor HubMethodCancellationTokenParameterRule = new(
         id: "TSRD005",
         title: "CancellationToken can be used as a parameter only in the server-to-client streaming method",
-        messageFormat: "CancellationToken cannot be used as a parameter in the {0}.",
+        messageFormat: "CancellationToken cannot be used as a parameter in the {0}",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
@@ -63,7 +63,7 @@ public static class DiagnosticDescriptorItems
     public static readonly DiagnosticDescriptor HubMethodMultipleCancellationTokenParameterRule = new(
         id: "TSRD006",
         title: "Using multiple CancellationToken in method parameters is prohibited",
-        messageFormat: "Multiple CancellationToken cannot be used as a parameter in the {0}.",
+        messageFormat: "Multiple CancellationToken cannot be used as a parameter in the {0}",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
@@ -72,7 +72,7 @@ public static class DiagnosticDescriptorItems
     public static readonly DiagnosticDescriptor ServerStreamingMethodParameterRule = new(
         id: "TSRD007",
         title: "Using IAsyncEnumerable<T> or ChannelReader<T> as a parameter in a server-to-client streaming method is prohibited",
-        messageFormat: "Do not use IAsyncEnumerable<T> or ChannelReader<T> as a parameter because the {0} was analyzed as a server-to-client streaming method.",
+        messageFormat: "Do not use IAsyncEnumerable<T> or ChannelReader<T> as a parameter because the {0} was analyzed as a server-to-client streaming method",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
@@ -101,7 +101,7 @@ public static class DiagnosticDescriptorItems
     public static readonly DiagnosticDescriptor HubAttributeAnnotationRule = new(
         id: "TSRD010",
         title: "The interface representing the hub must be annotated with HubAttribute",
-        messageFormat: "{0} does not implement an interface annotated with HubAttribute.",
+        messageFormat: "{0} does not implement an interface annotated with HubAttribute",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
@@ -110,7 +110,7 @@ public static class DiagnosticDescriptorItems
     public static readonly DiagnosticDescriptor ReceiverAttributeAnnotationRule = new(
         id: "TSRD011",
         title: "The interface representing the receiver must be annotated with ReceiverAttribute",
-        messageFormat: "{0} is not annotated with ReceiverAttribute.",
+        messageFormat: "{0} is not annotated with ReceiverAttribute",
         category: "Usage",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true,
