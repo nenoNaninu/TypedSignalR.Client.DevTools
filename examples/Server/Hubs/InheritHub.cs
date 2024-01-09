@@ -3,7 +3,7 @@ using Shared;
 
 namespace Server.Hubs;
 
-public class InheritHub : Hub<IInheritReceiver>, IInheritHub
+public class InheritHub : Hub<IInheritHubReceiver>, IInheritHub
 {
     private readonly ILogger<InheritHub> _logger;
 

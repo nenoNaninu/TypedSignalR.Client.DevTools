@@ -41,7 +41,7 @@ public interface IReceiverBase2 : IReceiverBaseBase
 }
 
 [Receiver]
-public interface IInheritReceiver : IReceiverBase1, IReceiverBase2
+public interface IInheritHubReceiver : IReceiverBase1, IReceiverBase2
 {
     Task ReceiveMessage2(string message, int value);
 }
