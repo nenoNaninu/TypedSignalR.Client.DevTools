@@ -73,4 +73,6 @@ app.MapHub<StreamingHub>("/hubs/StreamingHub");
 app.MapHub<AuthUnaryHub>("/hubs/AuthUnaryHub");
 app.MapHub<AuthUnaryHub2>("/hubs/AuthUnaryHub2");
 
+app.MapHub<InheritHub>("/hubs/InheritHub");
+
 app.Run();
