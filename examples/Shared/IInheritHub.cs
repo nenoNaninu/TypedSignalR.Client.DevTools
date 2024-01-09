@@ -24,7 +24,24 @@ public interface IInheritHub : IHubBase1, IHubBase2
     Task<UserDefinedType> Echo(UserDefinedType instance);
 }
 
-[Receiver]
-public interface IInheritHubReceiver
+
+public interface IReceiverBaseBase
 {
+    Task ReceiveMessage(string message, int value);
+}
+
+public interface IReceiverBase1 : IReceiverBaseBase
+{
+    Task ReceiveCustomMessage(UserDefinedType userDefined);
+}
+
+public interface IReceiverBase2 : IReceiverBaseBase
+{
+    Task Notify();
+}
+
+[Receiver]
+public interface IInheritHubReceiver : IReceiverBase1, IReceiverBase2
+{
+    Task ReceiveMessage2(string message, int value);
 }

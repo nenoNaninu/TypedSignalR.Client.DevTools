@@ -3,7 +3,7 @@ using Shared;
 
 namespace Server.Hubs;
 
-public class InheritHub : Hub<IUnaryHubReceiver>, IInheritHub
+public class InheritHub : Hub<IInheritHubReceiver>, IInheritHub
 {
     private readonly ILogger<InheritHub> _logger;
 
@@ -17,14 +17,17 @@ public class InheritHub : Hub<IUnaryHubReceiver>, IInheritHub
         return Task.FromResult(x + y);
     }
 
-    public Task<string> Cat(string x, string y)
+    public async Task<string> Cat(string x, string y)
     {
-        return Task.FromResult(x + y);
+        var str = x + y;
+        await this.Clients.All.ReceiveMessage(str, str.Length);
+        return str;
     }
 
-    public Task<UserDefinedType> Echo(UserDefinedType instance)
+    public async Task<UserDefinedType> Echo(UserDefinedType instance)
     {
-        return Task.FromResult(instance);
+        await this.Clients.All.ReceiveCustomMessage(instance);
+        return instance;
     }
 
     public Task<string> Get()
