@@ -21,9 +21,32 @@ public static class TypeValidator
             return false;
         }
 
+        bool isValid = ValidateHubTypeRuleCore(context, hubTypeSymbol, specialSymbols, accessLocation);
+
+        var allInterfaces = hubTypeSymbol.AllInterfaces;
+
+        if (allInterfaces.IsEmpty)
+        {
+            return isValid;
+        }
+
+        foreach (var typeSymbol in allInterfaces)
+        {
+            isValid &= ValidateHubTypeRuleCore(context, typeSymbol, specialSymbols, accessLocation);
+        }
+
+        return isValid;
+    }
+
+    private static bool ValidateHubTypeRuleCore(
+        SourceProductionContext context,
+        ITypeSymbol typeSymbol,
+        SpecialSymbols specialSymbols,
+        Location accessLocation)
+    {
         bool isValid = true;
 
-        foreach (ISymbol memberSymbol in hubTypeSymbol.GetMembers())
+        foreach (ISymbol memberSymbol in typeSymbol.GetMembers())
         {
             if (memberSymbol is IMethodSymbol methodSymbol)
             {
