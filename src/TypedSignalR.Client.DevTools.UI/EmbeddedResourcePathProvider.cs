@@ -18,12 +18,12 @@ internal static class EmbeddedResourcePathProvider
         "signalr-dev/_next/static/chunks/main-558fc47eb84446ba.js",
         "signalr-dev/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
         "signalr-dev/_next/static/chunks/webpack-e65c1d101fc3e111.js",
-        "signalr-dev/_next/static/chunks/pages/index-da9b02e27c214c1f.js",
+        "signalr-dev/_next/static/chunks/pages/index-35305f187aac133c.js",
         "signalr-dev/_next/static/chunks/pages/_app-3fbddd7878bee85f.js",
         "signalr-dev/_next/static/chunks/pages/_error-8353112a01355ec2.js",
         "signalr-dev/_next/static/css/eecc0ebe6e775f93.css",
-        "signalr-dev/_next/static/EXbk27KQSM-qv6yzRb185/_buildManifest.js",
-        "signalr-dev/_next/static/EXbk27KQSM-qv6yzRb185/_ssgManifest.js",
+        "signalr-dev/_next/static/u2a4sJjRy5SZLBxPesZ5w/_buildManifest.js",
+        "signalr-dev/_next/static/u2a4sJjRy5SZLBxPesZ5w/_ssgManifest.js",
     };
 
     public static IReadOnlyList<string> GetPaths() => _paths;
