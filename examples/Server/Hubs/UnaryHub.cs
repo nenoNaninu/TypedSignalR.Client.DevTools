@@ -48,10 +48,24 @@ public class UnaryHub : Hub<IUnaryHubReceiver>, IUnaryHub
         return Task.FromResult(dateTime.ToUniversalTime());
     }
 
-    public Task<string> Get()
+    public Task<string> GetString()
     {
         _logger.Log(LogLevel.Information, "UnaryHub.Get");
 
         return Task.FromResult("TypedSignalR.Client");
+    }
+    public Task<string> GetEmptyString()
+    {
+        return Task.FromResult(string.Empty);
+    }
+
+    public Task<bool> GetFalse()
+    {
+        return Task.FromResult(false);
+    }
+
+    public Task<bool> GetTrue()
+    {
+        return Task.FromResult(true);
     }
 }
