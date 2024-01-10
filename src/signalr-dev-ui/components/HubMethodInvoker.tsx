@@ -24,14 +24,12 @@ export const HubMethodInvoker: FC<Props> = props => {
 
     const invoke = useCallback(() => {
         const f = async () => {
-            console.log(args)
-
             try {
                 const ret = await hubConnection?.invoke(method.methodName, ...args);
-                const viewText = ret
-                    ? JSON.stringify(ret, null, 4)
-                    : method.returnType === "global::System.Threading.Tasks.Task"
-                        ? "Invocation completed." : "null";
+
+                const viewText = method.returnType === "global::System.Threading.Tasks.Task"
+                    ? "Invocation completed."
+                    : JSON.stringify(ret, null, 4);
 
                 setMessage(viewText);
             } catch (e) {
