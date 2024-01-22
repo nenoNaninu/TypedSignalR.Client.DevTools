@@ -1,3 +1,4 @@
+using AspNetCore.SignalR.OpenTelemetry;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Server.Hubs;
 using TypedSignalR.Client.DevTools;
@@ -9,7 +10,8 @@ var configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSignalR();
+builder.Services.AddSignalR()
+    .AddHubInstrumentation();
 
 builder.Services.AddSingleton<IDataStore, DataStore>();
 builder.Services.AddSingleton<IMessageRepository, MessageRepository>();
