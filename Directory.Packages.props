@@ -5,6 +5,7 @@
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     </PropertyGroup>
     <ItemGroup>
+        <PackageVersion Include="AspNetCore.SignalR.OpenTelemetry" Version="0.1.4" />
         <PackageVersion Include="TypedSignalR.Client" Version="3.4.3" />
         <PackageVersion Include="TypedSignalR.Client.Attributes" Version="1.1.0" />
         <PackageVersion Include="Tapper.Attributes" Version="1.9.0" />
