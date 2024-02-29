@@ -1,6 +1,6 @@
 # TypedSignalR.Client.DevTools
 
-[![NuGet](https://img.shields.io/nuget/v/TypedSignalR.Client.DevTools.svg)](https://www.nuget.org/profiles/TypedSignalR.Client.DevTools)
+[![NuGet](https://img.shields.io/nuget/v/TypedSignalR.Client.DevTools.svg)](https://www.nuget.org/packages/TypedSignalR.Client.DevTools)
 [![build](https://github.com/nenoNaninu/TypedSignalR.Client.DevTools/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/nenoNaninu/TypedSignalR.Client.DevTools/actions/workflows/build.yaml)
 
 SignalR development tools inspired by SwaggerUI.
