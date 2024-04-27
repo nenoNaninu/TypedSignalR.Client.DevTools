@@ -254,3 +254,5 @@ Please refer to [this blog](https://auth0.com/blog/aspnet-web-api-authorization/
   - C# Source Generator to create strongly typed SignalR clients.
 - [nenoNaninu/TypedSignalR.Client.TypeScript](https://github.com/nenoNaninu/TypedSignalR.Client.TypeScript)
   - TypeScript source generator to provide strongly typed SignalR clients by analyzing C# type definitions.
+- [nenoNaninu/AspNetCore.SignalR.OpenTelemetry](https://github.com/nenoNaninu/AspNetCore.SignalR.OpenTelemetry)
+  - SignalR instrumentation library for OpenTelemetry.
