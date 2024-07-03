@@ -23,6 +23,11 @@
         <RepositoryType>git</RepositoryType>
         <PackageTags>signalr;sourcegenerator</PackageTags>
         <Copyright>(c) nenoNaninu</Copyright>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <EmbedAllSources>true</EmbedAllSources>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <Version>1.0.8</Version>
     </PropertyGroup>
 
     <ItemGroup>

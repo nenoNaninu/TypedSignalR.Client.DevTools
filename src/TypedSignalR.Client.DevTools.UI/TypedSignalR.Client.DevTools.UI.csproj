@@ -17,6 +17,11 @@
         <RepositoryType>git</RepositoryType>
         <PackageTags>signalr;sourcegenerator</PackageTags>
         <Copyright>(c) nenoNaninu</Copyright>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <EmbedAllSources>true</EmbedAllSources>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <Version>1.0.8</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,6 +38,13 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>EmbeddedResourcePathProvider.tt</DependentUpon>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.SourceLink.GitHub">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
