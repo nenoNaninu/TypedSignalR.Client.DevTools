@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  assetPrefix: './'
+  basePath: '/signalr-dev'
 }
 
 module.exports = nextConfig
