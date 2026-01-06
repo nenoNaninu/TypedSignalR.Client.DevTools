@@ -247,14 +247,15 @@ public sealed class SourceGenerator : IIncrementalGenerator
                     continue;
                 }
 
-                var isAuthRequired = AnalyzeRequiredAuth(context, serviceTypeSymbol, specialSymbols);
+                var (isAuthRequired, authenticationSchemes) = AnalyzeRequiredAuth(context, serviceTypeSymbol, specialSymbols);
 
                 serviceTypeList.Add(new SignalRServiceTypeMetadata(
                     serviceTypeSymbol,
                     hubType,
                     receiverType,
                     mapHubMethod.Path,
-                    isAuthRequired
+                    isAuthRequired,
+                    authenticationSchemes
                 ));
             }
         }
@@ -343,46 +344,63 @@ public sealed class SourceGenerator : IIncrementalGenerator
         return isValid ? new TypeMetadata(receiverType) : null;
     }
 
-    private static bool AnalyzeRequiredAuth(
+    private static (bool isAuthRequired, List<string> authenticationSchemes) AnalyzeRequiredAuth(
         SourceProductionContext context,
         ITypeSymbol serviceType,
         SpecialSymbols specialSymbols)
     {
-        var attributes = serviceType.GetAttributes();
+        var schemes = new List<string>();
+        bool isAuthRequired = false;
 
-        foreach (var attribute in attributes)
+        void CheckAttributes(ImmutableArray<AttributeData> attributes)
         {
-            foreach (var authorizeAttributeSymbol in specialSymbols.AuthorizeAttributeSymbols)
+            foreach (var attribute in attributes)
             {
-                if (SymbolEqualityComparer.Default.Equals(attribute.AttributeClass, authorizeAttributeSymbol))
+                foreach (var authorizeAttributeSymbol in specialSymbols.AuthorizeAttributeSymbols)
                 {
-                    return true;
-                }
-            }
-        }
-
-        var members = serviceType.GetMembers();
-
-        foreach (var member in members)
-        {
-            if (member is IMethodSymbol method)
-            {
-                var methodAttributes = method.GetAttributes();
-
-                foreach (var methodAttribute in methodAttributes)
-                {
-                    foreach (var authorizeAttributeSymbol in specialSymbols.AuthorizeAttributeSymbols)
+                    if (SymbolEqualityComparer.Default.Equals(attribute.AttributeClass, authorizeAttributeSymbol))
                     {
-                        if (SymbolEqualityComparer.Default.Equals(methodAttribute.AttributeClass, authorizeAttributeSymbol))
+                        isAuthRequired = true;
+                        bool hasScheme = false;
+                        if (attribute.NamedArguments is { Length: > 0 })
                         {
-                            return true;
+                            foreach (var arg in attribute.NamedArguments)
+                            {
+                                if (arg.Key == "AuthenticationSchemes" && arg.Value.Value is string value && !string.IsNullOrWhiteSpace(value))
+                                {
+                                    // Split by comma in case multiple schemes are specified
+                                    foreach (var scheme in value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                                    {
+                                        if (!schemes.Contains(scheme))
+                                            schemes.Add(scheme);
+                                    }
+                                    hasScheme = true;
+                                }
+                            }
+                        }
+
+                        // If [Authorize] is present but no AuthenticationSchemes specified, assume JWT
+                        if (!hasScheme)
+                        {
+                            if (!schemes.Contains("Bearer"))
+                                schemes.Add("Bearer");
                         }
                     }
                 }
             }
         }
 
-        return false;
+        CheckAttributes(serviceType.GetAttributes());
+
+        foreach (var member in serviceType.GetMembers())
+        {
+            if (member is IMethodSymbol method)
+            {
+                CheckAttributes(method.GetAttributes());
+            }
+        }
+
+        return (isAuthRequired, schemes);
     }
 
 

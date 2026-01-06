@@ -11,6 +11,7 @@ public sealed class SignalRService
     public string Path { get; set; } = default!;
     public bool IsAuthRequired { get; set; }
 
+    public IReadOnlyList<string> AuthenticationSchemes { get; } = default!;
     public TypeMetadata HubType { get; set; } = default!;
     public TypeMetadata ReceiverType { get; set; } = default!;
 }

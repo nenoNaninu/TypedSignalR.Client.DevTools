@@ -1,5 +1,6 @@
 using AspNetCore.SignalR.OpenTelemetry;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Negotiate;
 using Server.Hubs;
 using TypedSignalR.Client.DevTools;
 
@@ -47,6 +48,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+    .AddNegotiate();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -76,5 +80,6 @@ app.MapHub<AuthUnaryHub>("/hubs/AuthUnaryHub");
 app.MapHub<AuthUnaryHub2>("/hubs/AuthUnaryHub2");
 
 app.MapHub<InheritHub>("/hubs/InheritHub");
+app.MapHub<WindowsAuthHub>("/hubs/WindowsAuthHub");
 
 app.Run();

@@ -13,17 +13,17 @@ internal static class EmbeddedResourcePathProvider
         "signalr-dev/404.html",
         "signalr-dev/index.html",
         "signalr-dev/spec-test.json",
+        "signalr-dev/_next/static/8rskl_x3Ul0ppvNbONBvX/_buildManifest.js",
+        "signalr-dev/_next/static/8rskl_x3Ul0ppvNbONBvX/_ssgManifest.js",
         "signalr-dev/_next/static/chunks/830-9d48ffa709498335.js",
         "signalr-dev/_next/static/chunks/framework-2c79e2a64abdb08b.js",
         "signalr-dev/_next/static/chunks/main-558fc47eb84446ba.js",
         "signalr-dev/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
         "signalr-dev/_next/static/chunks/webpack-e65c1d101fc3e111.js",
-        "signalr-dev/_next/static/chunks/pages/index-35305f187aac133c.js",
+        "signalr-dev/_next/static/chunks/pages/index-b84d9c2860bca921.js",
         "signalr-dev/_next/static/chunks/pages/_app-3fbddd7878bee85f.js",
         "signalr-dev/_next/static/chunks/pages/_error-8353112a01355ec2.js",
-        "signalr-dev/_next/static/css/eecc0ebe6e775f93.css",
-        "signalr-dev/_next/static/u2a4sJjRy5SZLBxPesZ5w/_buildManifest.js",
-        "signalr-dev/_next/static/u2a4sJjRy5SZLBxPesZ5w/_ssgManifest.js",
+        "signalr-dev/_next/static/css/ee1e8d9be6bfadf4.css",
     };
 
     public static IReadOnlyList<string> GetPaths() => _paths;

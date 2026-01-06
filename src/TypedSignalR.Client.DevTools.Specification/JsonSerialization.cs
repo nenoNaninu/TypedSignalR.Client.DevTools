@@ -46,6 +46,20 @@ public static class MetadataJsonExtensions
         metadata.IsAuthRequired.SerializeToJson(stringBuilder);
         stringBuilder.Append(',');
 
+        stringBuilder.AppendAsJsonKey("authenticationSchemes");
+        stringBuilder.Append('[');
+        if (metadata.AuthenticationSchemes != null && metadata.AuthenticationSchemes.Count > 0)
+        {
+            metadata.AuthenticationSchemes[0].SerializeToJson(stringBuilder);
+            for (int i = 1; i < metadata.AuthenticationSchemes.Count; i++)
+            {
+                stringBuilder.Append(',');
+                metadata.AuthenticationSchemes[i].SerializeToJson(stringBuilder);
+            }
+        }
+        stringBuilder.Append(']');
+        stringBuilder.Append(',');
+
         stringBuilder.AppendAsJsonKey("hubType");
         metadata.HubType.SerializeToJson(stringBuilder);
         stringBuilder.Append(',');

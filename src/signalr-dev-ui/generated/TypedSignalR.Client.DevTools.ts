@@ -10,6 +10,8 @@ export type SignalRService = {
     path: string;
     /** Transpiled from bool */
     isAuthRequired: boolean;
+    /** Transpiled from System.Collections.Generic.IReadOnlyList<string> */
+    authenticationSchemes: string[];
     /** Transpiled from TypedSignalR.Client.DevTools.TypeMetadata */
     hubType: TypeMetadata;
     /** Transpiled from TypedSignalR.Client.DevTools.TypeMetadata */
