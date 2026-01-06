@@ -49,7 +49,7 @@ namespace TypedSignalR.Client.DevTools;
 
 internal static partial class EndpointRouteBuilderExtensions
 {{
-    private static partial ReadOnlySpan<byte> GetSpecJsonBytes() => new byte[] {{ {str} }};
+    private static partial ReadOnlyMemory<byte> GetSpecJsonBytes() => new byte[] {{ {str} }};
 }}";
     }
 }

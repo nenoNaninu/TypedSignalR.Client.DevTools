@@ -24,17 +24,17 @@ internal static partial class EndpointRouteBuilderExtensions
     public static void UseSignalRHubSpecification(this IEndpointRouteBuilder endpointRouteBuilder)
     {
         // Actually, it does not use middleware.
-        endpointRouteBuilder.MapGet(""/signalr-dev/spec.json"", (HttpContext context) =>
+        endpointRouteBuilder.MapGet(""/signalr-dev/spec.json"", async (HttpContext context) =>
         {
             context.Response.StatusCode = StatusCodes.Status200OK;
             context.Response.ContentType = ""application/json"";
 
-            context.Response.BodyWriter.Write(GetSpecJsonBytes());
-            context.Response.BodyWriter.Complete();
+            var jsonBytes = GetSpecJsonBytes();
+            await context.Response.Body.WriteAsync(jsonBytes);
         });
     }
 
-    private static partial ReadOnlySpan<byte> GetSpecJsonBytes();
+    private static partial ReadOnlyMemory<byte> GetSpecJsonBytes();
 }
 ";
     }
