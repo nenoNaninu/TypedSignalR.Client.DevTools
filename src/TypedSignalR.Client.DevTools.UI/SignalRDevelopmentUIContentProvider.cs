@@ -40,7 +40,7 @@ internal static class SignalRDevelopmentUIContentProvider
         var filename = Path.GetFileName(path);
         var dir = Path.GetDirectoryName(path)!.Replace('\\', '/');
 
-        var dir2 = Regex.Replace(dir, "/([0-9].*/)", "/_$1");
+        var dir2 = Regex.Replace(dir, @"(?<=/)(\d)", "_$1");
 
         var dir3 = dir2.Replace('/', '.');
         var dir4 = dir3.Replace('-', '_');
