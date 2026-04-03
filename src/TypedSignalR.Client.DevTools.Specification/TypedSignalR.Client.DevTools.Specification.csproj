@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>10</LangVersion>
-        <Nullable>enable</Nullable>
         <RootNamespace>TypedSignalR.Client.DevTools</RootNamespace>
         <IsPackable>true</IsPackable>
         <IsRoslynComponent>true</IsRoslynComponent>
